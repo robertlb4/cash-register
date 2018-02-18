@@ -27,28 +27,30 @@ function checkCashRegister(price, cash, cid) {
                     change.push([cid[i][0], 0]);
                     while (changeAmount >= unitValues[i] &&
                         cidUnitAmounts[i] !== 0) {
-
                         currentUnit = parseFloat((currentUnit + unitValues[i]).toFixed(2));
                         changeAmount = parseFloat((changeAmount - unitValues[i]).toFixed(2));
                         cidUnitAmounts[i]--;
-
                     }
                     change[indexer][1] = currentUnit;
                     indexer++;
-
                 }
-
             }
             if (changeAmount <= 0) {
                 break;
             }
             else {
-                i = placeHolder - 1
-                changeAmount += unitValues[placeHolder]
-                change.pop();
-                indexer--;
+                if (change[change.length - 1][1] > unitValues[placeHolder]) {
+                    i = placeHolder - 1
+                    change[change.length - 1][1] -= unitValues[placeHolder]
+                    changeAmount += unitValues[placeHolder]
+                }
+                else {
+                    i = placeHolder - 1
+                    changeAmount = parseFloat((cash - price).toFixed(2))
+                    change.pop();
+                    indexer--;
+                }
             }
-
         }
         if (changeAmount !== 0) {
             return "Insufficient Funds";
@@ -60,17 +62,17 @@ function checkCashRegister(price, cash, cid) {
 }
 
 
-let register4 = checkCashRegister(19.7, 20, [
-    ["PENNY", 0],
-    ["NICKEL", 0],
-    ["DIME", 10],
-    ["QUARTER", 10],
-    ["ONE", 0],
-    ["FIVE", 0],
-    ["TEN", 0],
-    ["TWENTY", 0],
-    ["ONE HUNDRED", 0]
-])
+// let register4 = checkCashRegister(19.2, 20, [
+//     ["PENNY", 0],
+//     ["NICKEL", 0],
+//     ["DIME", 10],
+//     ["QUARTER", 10],
+//     ["ONE", 0],
+//     ["FIVE", 0],
+//     ["TEN", 0],
+//     ["TWENTY", 0],
+//     ["ONE HUNDRED", 0]
+// ])
 
 // let register3 = checkCashRegister(19.5, 20, [
 //     ["PENNY", 0.5],
@@ -96,15 +98,15 @@ let register4 = checkCashRegister(19.7, 20, [
 //     ["ONE HUNDRED", 0]
 // ])
 
-// let register = checkCashRegister(3.26, 100, [
-//     ["PENNY", 1.01],
-//     ["NICKEL", 2.05],
-//     ["DIME", 3.10],
-//     ["QUARTER", 4.25],
-//     ["ONE", 90],
-//     ["FIVE", 55],
-//     ["TEN", 20],
-//     ["TWENTY", 60],
-//     ["ONE HUNDRED", 100]
-//])
-console.log(register4);
+let register = checkCashRegister(3.26, 100, [
+    ["PENNY", 1.01],
+    ["NICKEL", 2.05],
+    ["DIME", 3.10],
+    ["QUARTER", 4.25],
+    ["ONE", 90],
+    ["FIVE", 55],
+    ["TEN", 20],
+    ["TWENTY", 60],
+    ["ONE HUNDRED", 100]
+])
+console.log(register);
