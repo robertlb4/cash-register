@@ -35,7 +35,7 @@ function checkCashRegister(price, cash, cid) {
                     indexer++;
                 }
             }
-            if (changeAmount <= 0) {
+            if (changeAmount <= 0 || indexer === 0) {
                 break;
             }
             else {
@@ -62,17 +62,29 @@ function checkCashRegister(price, cash, cid) {
 }
 
 
-// let register4 = checkCashRegister(19.2, 20, [
-//     ["PENNY", 0],
-//     ["NICKEL", 0],
-//     ["DIME", 10],
-//     ["QUARTER", 10],
-//     ["ONE", 0],
-//     ["FIVE", 0],
-//     ["TEN", 0],
-//     ["TWENTY", 0],
-//     ["ONE HUNDRED", 0]
-// ])
+let register5 = checkCashRegister(19.50, 20.00, [
+    ["PENNY", 0.01],
+    ["NICKEL", 0],
+    ["DIME", 0],
+    ["QUARTER", 0],
+    ["ONE", 1.00],
+    ["FIVE", 0],
+    ["TEN", 0],
+    ["TWENTY", 0],
+    ["ONE HUNDRED", 0]
+])
+
+let register4 = checkCashRegister(19.7, 20, [
+    ["PENNY", 0],
+    ["NICKEL", 0],
+    ["DIME", 10],
+    ["QUARTER", 10],
+    ["ONE", 0],
+    ["FIVE", 0],
+    ["TEN", 0],
+    ["TWENTY", 0],
+    ["ONE HUNDRED", 0]
+])
 
 // let register3 = checkCashRegister(19.5, 20, [
 //     ["PENNY", 0.5],
@@ -98,15 +110,15 @@ function checkCashRegister(price, cash, cid) {
 //     ["ONE HUNDRED", 0]
 // ])
 
-let register = checkCashRegister(3.26, 100, [
-    ["PENNY", 1.01],
-    ["NICKEL", 2.05],
-    ["DIME", 3.10],
-    ["QUARTER", 4.25],
-    ["ONE", 90],
-    ["FIVE", 55],
-    ["TEN", 20],
-    ["TWENTY", 60],
-    ["ONE HUNDRED", 100]
-])
-console.log(register);
+// let register = checkCashRegister(3.26, 100, [
+//     ["PENNY", 1.01],
+//     ["NICKEL", 2.05],
+//     ["DIME", 3.10],
+//     ["QUARTER", 4.25],
+//     ["ONE", 90],
+//     ["FIVE", 55],
+//     ["TEN", 20],
+//     ["TWENTY", 60],
+//     ["ONE HUNDRED", 100]
+// ])
+console.log(register5);
